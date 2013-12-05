@@ -16,6 +16,30 @@
             </ul>
         </nav>
         <h1>Test page</h1>
+        <p>Welcome to this wonderful app!</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test_popup">Click me!</button>
+
+        <div class="modal fade" id="test_popup" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Title</h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <p>Hi! This is a test popup with Bootstrap :)</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>

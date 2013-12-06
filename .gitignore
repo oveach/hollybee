@@ -1,0 +1,6 @@
+!.gitkeep
+
+# ignore eclipse files
+.settings
+.buildpath
+.project

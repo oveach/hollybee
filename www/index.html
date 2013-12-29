@@ -13,17 +13,20 @@
         <nav>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#trips" data-toggle="tab">Trips</a></li>
-                <li><a href="#config" data-toggle="tab">Config</a></li>
                 <li><a href="#expenses" data-toggle="tab">Expenses</a></li>
+                <li><a href="#config" data-toggle="tab">Config</a></li>
             </ul>
         </nav>
         
         <div class="tab-content">
             <div class="tab-pane active" id="trips">
 
-                <h1>Trips page</h1>
-                <p>Welcome to this wonderful app!</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test_popup">Click me!</button>
+                <h1>Trips list</h1>
+                <p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test_popup">
+                        <span class="glyphicon glyphicon-plus-sign"></span> Add new trip
+                    </button>
+                </p>
 
                 <div class="modal fade" id="test_popup" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -44,15 +47,32 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <div class="tab-pane" id="config">
-                <h1>Config page</h1>
-                <p>To be completed</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <span class="badge">300 €</span>
+                        <h4 class="list-group-item-heading">Venice</h4>
+                        <small class="list-group-item-text">From 12/01 to 17/01</small>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <span class="badge">400 €</span>
+                        <h4 class="list-group-item-heading">New-York</h4>
+                        <small class="list-group-item-text">From 12/01 to 17/01</small>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <span class="badge">250 €</span>
+                        <h4 class="list-group-item-heading">Montreal</h4>
+                        <small class="list-group-item-text">From 12/01 to 17/01</small>
+                    </a>
+                </div>
             </div>
 
             <div class="tab-pane" id="expenses">
                 <h1>Expenses page</h1>
+                <p>To be completed</p>
+            </div>
+
+            <div class="tab-pane" id="config">
+                <h1>Config page</h1>
                 <p>To be completed</p>
             </div>
         </div>

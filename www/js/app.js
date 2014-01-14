@@ -5,7 +5,8 @@ angular.module('hollybee', ['ui.bootstrap'])
 		// this var MUST be named "modalInstance", else it doesn't work!!
 		var modalInstance = $modal.open({
 			templateUrl: 'form-trip.html',
-			controller: 'TripFormCtrl'
+			controller: 'TripFormCtrl',
+			backdrop: 'static'
 		});
 	};
 })

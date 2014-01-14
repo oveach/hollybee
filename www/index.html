@@ -1,52 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="hollybee">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holly Bee!</title>
+    <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/ui-bootstrap-tpls-0.9.0.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/hollybee.css">
 </head>
 <body>
     <div class="container">
 
-        <nav>
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#trips" data-toggle="tab">Trips</a></li>
-                <li><a href="#expenses" data-toggle="tab">Expenses</a></li>
-                <li><a href="#config" data-toggle="tab">Config</a></li>
-            </ul>
-        </nav>
-        
-        <div class="tab-content">
-            <div class="tab-pane active" id="trips">
-
+        <tabset>
+            <tab heading="Trips" ng-controller="TripsCtrl">
                 <h1>Trips list</h1>
                 <p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test_popup">
+                    <button class="btn btn-primary" ng-click="showForm()">
                         <span class="glyphicon glyphicon-plus-sign"></span> Add new trip
                     </button>
                 </p>
-
-                <div class="modal fade" id="test_popup" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <div class="modal-title">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Title</h4>
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <p>Hi! This is a test popup with Bootstrap :)</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="list-group">
                     <a href="#" class="list-group-item">
                         <span class="badge">300 €</span>
@@ -64,21 +39,14 @@
                         <small class="list-group-item-text">From 12/01 to 17/01</small>
                     </a>
                 </div>
-            </div>
-
-            <div class="tab-pane" id="expenses">
-                <h1>Expenses page</h1>
-                <p>To be completed</p>
-            </div>
-
-            <div class="tab-pane" id="config">
+            </tab>
+            <tab heading="Config">
                 <h1>Config page</h1>
                 <p>To be completed</p>
-            </div>
-        </div>
+            </tab>
+        </tabset>
+
     </div>
 
-    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 </html>

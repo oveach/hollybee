@@ -1,0 +1,2 @@
+/* angular-ui bootstrap hack */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

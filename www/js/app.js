@@ -16,6 +16,22 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap'])
 })
 
 .controller('TripsCtrl', function($scope, $modal){
+	$scope.trips = [{
+		name: 'Venice',
+		startDate: '15/03',
+		endDate: '18/03',
+		budget: 400 + Math.round(Math.random() * 100)
+	},{
+		name: 'Montreal',
+		startDate: '15/03',
+		endDate: '18/03',
+		budget: 300 + Math.round(Math.random() * 100)
+	},{
+		name: 'New-York',
+		startDate: '15/03',
+		endDate: '18/03',
+		budget: 400 + Math.round(Math.random() * 100)
+	}];
 	$scope.showForm = function(){
 		// this var MUST be named "modalInstance", else it doesn't work!!
 		var modalInstance = $modal.open({
@@ -33,7 +49,7 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap'])
 })
 
 .controller('SetupCtrl', function($scope){
-	
+
 })
 
 ;

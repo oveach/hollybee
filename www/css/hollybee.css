@@ -1,2 +1,6 @@
 /* angular-ui bootstrap hack */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+body {
+	padding-bottom: 50px;
+}

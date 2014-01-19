@@ -1,4 +1,4 @@
-angular.module('hollybee', ['ngRoute', 'ui.bootstrap'])
+angular.module('hollybee', ['ngRoute', 'ui.bootstrap', 'ngTouch'])
 
 .config(function($routeProvider){
 	$routeProvider
@@ -9,6 +9,14 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap'])
 		.when('/setup', {
 			controller: 'SetupCtrl',
 			templateUrl: 'views/setup.html'
+		})
+		.when('/trip/:tripId', {
+			controller: 'TripCtrl',
+			templateUrl: 'views/trip.html'
+		})
+		.when('/expenses', {
+			controller: 'ExpenseCtrl',
+			templateUrl: 'views/expenses.html'
 		})
 		.otherwise({
 			redirectTo: '/trips'
@@ -32,13 +40,33 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap'])
 		endDate: '18/03',
 		budget: 400 + Math.round(Math.random() * 100)
 	}];
-	$scope.showForm = function(){
+	
+	$scope.showModal = function(){
 		// this var MUST be named "modalInstance", else it doesn't work!!
 		var modalInstance = $modal.open({
-			templateUrl: 'views/form-trip.html',
+			templateUrl: 'views/modal.html',
 			controller: 'TripFormCtrl',
 			backdrop: 'static'
 		});
+	};
+
+	$scope.delete = function(){
+		// this var MUST be named "modalInstance", else it doesn't work!!
+		var modalInstance = $modal.open({
+			templateUrl: 'views/delete_trip.html',
+			controller: 'DeleteTripCtrl',
+			backdrop: 'static'
+		});
+	};
+})
+
+.controller('DeleteTripCtrl', function($scope, $modalInstance){
+	$scope.delete = function(){
+		alert("deleting...");
+		$modalInstance.close();
+	};
+	$scope.cancel = function(){
+		$modalInstance.close();
 	};
 })
 
@@ -49,6 +77,16 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap'])
 })
 
 .controller('SetupCtrl', function($scope){
+
+})
+
+.controller('TripCtrl', function($scope, $location){
+	$scope.cancel = function(){
+		$location.path('/');
+	};
+})
+
+.controller('ExpenseCtrl', function($scope){
 
 })
 

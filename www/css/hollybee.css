@@ -4,3 +4,18 @@
 body {
 	padding-bottom: 50px;
 }
+
+/* navbar hack to disable responsiveness */
+ul.nav {
+	margin: 0;
+}
+
+ul.nav li {
+	float: left;
+	padding: 0;
+}
+
+ul.nav li a {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}

@@ -5,6 +5,11 @@ body {
 	padding-bottom: 50px;
 }
 
+.modal-header-warning {
+	color: #D96304;
+	background-color: #FCE4C6;
+}
+
 /* navbar hack to disable responsiveness */
 ul.nav {
 	margin: 0;

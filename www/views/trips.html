@@ -1,11 +1,12 @@
 <h1>Trips list</h1>
-<p>
-    <button class="btn btn-primary" ng-click="showForm()">
+<p class="text-right">
+    <a class="btn btn-primary" role="button" href="#/trips/add">
         <span class="glyphicon glyphicon-plus-sign"></span> Add new trip
-    </button>
+    </a>
 </p>
+<small>Tip: Swipe a trip to the left to remove it.</small>
 <div class="list-group">
-    <a href="#" class="list-group-item" ng-repeat="trip in trips">
+    <a href="#/trips/edit/{{ trip.id }}" class="list-group-item" ng-repeat="trip in trips" ng-swipe-left="delete(trip)">
         <span class="badge">{{ trip.budget }} €</span>
         <h4 class="list-group-item-heading">{{ trip.name }}</h4>
         <small class="list-group-item-text">From {{ trip.startDate }} to {{ trip.endDate }}</small>

@@ -5,8 +5,8 @@
     </a>
 </p>
 <div class="list-group" ng-show="{{ trips.length > 0 }}">
-    <small>Tip: Swipe a trip to the left to remove it.</small>
-    <a href="#/trips/edit/{{ trip.id }}" class="list-group-item" ng-repeat="trip in trips" ng-swipe-left="delete(trip)">
+    <small>Tip: Swipe a trip to the right to remove it.</small>
+    <a href="#/trips/edit/{{ trip.id }}" class="list-group-item" ng-repeat="trip in trips" ng-swipe-right="delete(trip)" ng-swipe-left="edit(trip)">
         <span class="badge">{{ trip.budget }} €</span>
         <h4 class="list-group-item-heading">{{ trip.name }}</h4>
         <small class="list-group-item-text">From {{ trip.startDate }} to {{ trip.endDate }}</small>

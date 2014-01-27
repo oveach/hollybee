@@ -15,11 +15,15 @@ angular.module('controllers', [])
     };
 })
 
-.controller('TripsCtrl', function($scope, $modal, $rootScope, trips, tripDelete){
+.controller('TripsCtrl', function($scope, $modal, $rootScope, $location, trips, tripDelete){
 	$scope.trips = trips.getTrips();
 
 	$scope.delete = function(trip){
         tripDelete.confirmDelete(trip);
+    };
+
+    $scope.edit = function(trip){
+        $location.path('/trips/edit/' + trip.id);
     };
 })
 

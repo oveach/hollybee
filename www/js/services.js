@@ -1,28 +1,17 @@
 angular.module('services', [])
 
 .factory('trips', function(){
-	var trips = {
-        lastId: 2,
-        data: [{
-    		id: 0,
-    		name: 'Venice',
-    		startDate: '15/03',
-    		endDate: '18/03',
-    		budget: 400 + Math.round(Math.random() * 100)
-    	},{
-    		id: 1,
-    		name: 'Montreal',
-    		startDate: '15/03',
-    		endDate: '18/03',
-    		budget: 300 + Math.round(Math.random() * 100)
-    	},{
-    		id: 2,
-    		name: 'New-York',
-    		startDate: '15/03',
-    		endDate: '18/03',
-    		budget: 400 + Math.round(Math.random() * 100)
-    	}]
-    };
+    var trips = {};
+    // load trips from localstorage
+    if (localStorage.trips) {
+        trips = angular.fromJson(localStorage.trips);
+    } else {
+        // initial structure if empty
+    	trips = {
+            lastId: 0,
+            data: []
+        };
+    }
 
 	return {
 		getTrips: function(){
@@ -47,6 +36,7 @@ angular.module('services', [])
                     }
                 }
             }
+            this.updateStorage();
         },
         addTrip: function(trip){
             var id = trips.lastId + 1;
@@ -56,6 +46,10 @@ angular.module('services', [])
         },
         deleteTrip: function(trip){
             trips.data.splice(trips.data.indexOf(trip), 1);
+            this.updateStorage();
+        },
+        updateStorage: function(){
+            localStorage.trips = angular.toJson(trips);
         }
 	};
 });

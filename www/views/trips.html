@@ -4,8 +4,8 @@
         <span class="glyphicon glyphicon-plus-sign"></span> Add new trip
     </a>
 </p>
-<small>Tip: Swipe a trip to the left to remove it.</small>
-<div class="list-group">
+<div class="list-group" ng-show="{{ trips.length > 0 }}">
+    <small>Tip: Swipe a trip to the left to remove it.</small>
     <a href="#/trips/edit/{{ trip.id }}" class="list-group-item" ng-repeat="trip in trips" ng-swipe-left="delete(trip)">
         <span class="badge">{{ trip.budget }} €</span>
         <h4 class="list-group-item-heading">{{ trip.name }}</h4>

@@ -36,7 +36,7 @@ angular.module('services', [])
                     }
                 }
             }
-            this.updateStorage();
+            this.persist();
         },
         addTrip: function(trip){
             var id = trips.lastId + 1;
@@ -46,9 +46,9 @@ angular.module('services', [])
         },
         deleteTrip: function(trip){
             trips.data.splice(trips.data.indexOf(trip), 1);
-            this.updateStorage();
+            this.persist();
         },
-        updateStorage: function(){
+        persist: function(){
             localStorage.trips = angular.toJson(trips);
         }
 	};

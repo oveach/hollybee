@@ -22,6 +22,10 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap', 'ngTouch', 'services', 'c
 			controller: 'ExpenseCtrl',
 			templateUrl: 'views/expenses.html'
 		})
+		.when('/expense', {
+			// controller: 'ExpenseCtrl',
+			templateUrl: 'views/expense.html'
+		})
 		.otherwise({
 			redirectTo: '/trips'
 		});

@@ -1,0 +1,25 @@
+<h1>Expense detail</h1>
+
+<form role="form" ng-submit="save(trip)">
+    <input type="hidden" id="id" ng-model="trip.id">
+    <div class="form-group">
+        <label for="name">Date</label>
+        <input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate">
+    </div>
+    <div class="form-group">
+        <label for="name">Description</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter short description here" ng-model="trip.name">
+    </div>
+    <div class="form-group">
+        <label for="name">Amount</label>
+        <div class="input-group">
+            <input type="number" class="form-control" id="budget" placeholder="Amount" ng-model="trip.budget">
+            <span class="input-group-addon">€</span>
+        </div>
+    </div>
+    <p class="text-right">
+        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        <button class="btn btn-danger btn-lg" ng-click="delete(trip)">Delete</button>
+        <button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
+    </p>
+</form>

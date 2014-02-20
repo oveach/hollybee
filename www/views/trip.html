@@ -1,5 +1,16 @@
 <h1>Trip detail</h1>
-<p><a href="#/expenses">Go to expenses</a></p>
+
+<p>
+	<div class="pull-left">
+		Budget:<br/>
+		<button class="btn btn-default btn-lg">{{ trip.budget }} €</button>
+	</div>
+	<div class="pull-right">
+		Total Expenses:<br/>
+		<a href="#/expenses" class="btn btn-success btn-lg">123.50 €</a>
+	</div>
+	<div class="clearfix"></div>
+</p>
 
 <form role="form" ng-submit="save(trip)">
     <input type="hidden" id="id" ng-model="trip.id">
@@ -8,12 +19,12 @@
 		<input type="text" class="form-control" id="name" placeholder="Enter the destination" ng-model="trip.name">
 	</div>
 	<div class="form-group">
-		<label for="name">From</label>
-		<input type="date" class="form-control" id="startDate" placeholder="Begin date" ng-model="trip.startDate">
+		<label for="name">Start date</label>
+		<input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate">
 	</div>
 	<div class="form-group">
-		<label for="name">To</label>
-		<input type="date" class="form-control" id="endDate" placeholder="End date" ng-model="trip.endDate">
+		<label for="name">End date</label>
+		<input type="date" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate">
 	</div>
 	<div class="form-group">
 		<label for="name">Budget</label>

@@ -1,6 +1,7 @@
 /* angular-ui bootstrap hack */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
+/* leave some space left for the menu in the bottom of page */
 body {
 	padding-bottom: 50px;
 }
@@ -23,4 +24,32 @@ ul.nav li {
 ul.nav li a {
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+
+.badge-success {
+    background-color: #419641;
+}
+
+.badge-warning {
+    background-color: #EB9316;
+}
+
+.badge-danger {
+    background-color: #C12E2A;
+}
+
+#expenses {
+    margin-top: 2em;
+}
+
+#expenses a span.badge {
+    font-size: 1em;
+}
+
+.expenses-header {
+    padding: 0 15px;
+}
+
+.expenses-header>div {
+    padding: 0;
 }

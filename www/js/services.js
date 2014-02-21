@@ -4,7 +4,7 @@ angular.module('services', [])
     var trips = {};
     // load trips from localstorage
     if (localStorage.trips) {
-        trips = angular.fromJson(localStorage.trips);
+        trips = JSON.parse(localStorage.trips);
     } else {
         // initial structure if empty
     	trips = {
@@ -43,7 +43,7 @@ angular.module('services', [])
             this.persist();
         },
         persist: function(){
-            localStorage.trips = angular.toJson(trips);
+            localStorage.trips = JSON.stringify(trips);
         }
 	};
 });

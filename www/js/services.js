@@ -1,10 +1,10 @@
 angular.module('services', [])
 
-.factory('trips', function(){
+.factory('trips', function($filter){
     var trips = {};
     // load trips from localstorage
     if (localStorage.trips) {
-        trips = angular.fromJson(localStorage.trips);
+        trips = JSON.parse(localStorage.trips);
     } else {
         // initial structure if empty
     	trips = {
@@ -18,11 +18,7 @@ angular.module('services', [])
 			return trips.data;
 		},
 		getTrip: function(id){
-			for (var i = 0; i < trips.data.length; i++) {
-                if (trips.data[i].id == id) {
-                    return trips.data[i];
-                }
-            }
+            return $filter('filter')(trips.data, {id: id})[0];
 		},
         saveTrip: function(trip){
             // new trip ?
@@ -30,11 +26,9 @@ angular.module('services', [])
                 this.addTrip(trip);
             // update existing one
             } else {
-                for (var i = 0; i < trips.data.length; i++) {
-                    if (trips.data[i].id == trip.id) {
-                        trips.data[i] = trip;
-                    }
-                }
+                var tripExisting = this.getTrip(trip.id);
+                var i = trips.data.indexOf(tripExisting);
+                trips.data[i] = trip;
             }
             this.persist();
         },
@@ -49,7 +43,7 @@ angular.module('services', [])
             this.persist();
         },
         persist: function(){
-            localStorage.trips = angular.toJson(trips);
+            localStorage.trips = JSON.stringify(trips);
         }
 	};
 });

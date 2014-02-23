@@ -32,8 +32,11 @@ angular.module('controllers', [])
     };
 })
 
-.controller('TripsCtrl', function($scope, $modal, $rootScope, $location, trips, tripDelete){
+.controller('TripsCtrl', function($scope, $modal, $rootScope, $location, trips, tripDelete, expenseService){
 	$scope.trips = trips.getTrips();
+    $scope.trips.forEach(function(trip){
+        trip.budgetStatus = expenseService.getBudgetStatus(trip.id);
+    });
 
 	$scope.delete = function(trip){
         tripDelete.confirmDelete(trip);
@@ -67,6 +70,7 @@ angular.module('controllers', [])
     	$scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
     }
     $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
+    $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
 
 	$scope.cancel = function(){
         $location.path('/');
@@ -84,6 +88,7 @@ angular.module('controllers', [])
     $scope.trip = trips.getTrip($routeParams.tripId);
     $scope.expenses = expenseService.getExpenses($routeParams.tripId);
     $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
+    $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
 
     $scope.edit = function(expense){
         $location.path('/expenses/edit/trip/' + $routeParams.tripId + '/expense/' + expense.id);

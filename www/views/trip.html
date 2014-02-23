@@ -3,11 +3,11 @@
 <p>
 	<div class="pull-left">
 		Budget:<br/>
-		<button class="btn btn-default btn-lg">{{ trip.budget }} €</button>
+		<button class="btn btn-default btn-lg">{{ trip.budget || 0 }} €</button>
 	</div>
 	<div class="pull-right text-right">
 		Total Expenses:<br/>
-		<a href="#/expenses/{{ trip.id }}" class="btn btn-success btn-lg">{{ expensesTotal }} €</a>
+		<a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal }} €</a>
 	</div>
 	<div class="clearfix"></div>
 </p>
@@ -35,7 +35,7 @@
 	</div>
 	<p class="text-right">
 		<button type="submit" class="btn btn-primary btn-lg">Save</button>
-		<button class="btn btn-danger btn-lg" ng-click="delete(trip)">Delete</button>
+		<button class="btn btn-danger btn-lg" ng-click="delete(trip)" ng-show="trip.id">Delete</button>
 		<button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
 	</p>
 </form>

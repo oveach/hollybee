@@ -48,7 +48,7 @@ angular.module('services', [])
 	};
 })
 
-.factory('expenseService', function($filter){
+.factory('expenseService', function($filter, trips){
     return {
         tripId: null,
         expenses: {
@@ -116,6 +116,20 @@ angular.module('services', [])
                 total = total + expense.amount;
             });
             return total;
+        },
+        getBudgetStatus: function(tripId){
+            var total = this.getTotalForTrip(tripId);
+            var trip = trips.getTrip(tripId);
+            // exceed budget ?
+            if (total > trip.budget) {
+                return "danger";
+            // exceed 90% budget ?
+            } else if (total >= trip.budget * 0.9) {
+                return "warning";
+            // below 90% budget
+            } else {
+                return "success";
+            }
         }
     };
 })

@@ -7,24 +7,24 @@
 </div>
 <div class="row expenses-header">
     <div class="col-xs-4">
-        <a href="#/trips/edit/xx" class="btn btn-default btn-lg">400 €</a>
+        <a href="#/trips/edit/{{ trip.id }}" class="btn btn-default btn-lg">{{ trip.budget }} €</a>
     </div>
     <div class="col-xs-4 text-center">
-        <a href="#/expense" class="btn btn-primary btn-lg">
+        <a href="#/expenses/add/{{ trip.id }}" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-plus-sign"></span> Add
         </a>
     </div>
     <div class="col-xs-4 text-right">
-        <button class="btn btn-success btn-lg">123.50 €</button>
+        <button class="btn btn-success btn-lg">{{ expensesTotal }} €</button>
     </div>
 </div>
 
-<div id="expenses" class="list-group">
+<div id="expenses" class="list-group" ng-show="{{ expenses.length > 0 }}">
     <small>Tip: Swipe a line to the right to remove it.</small>
-    <a href="#/expense" class="list-group-item">
-        <span class="badge">25.00 €</span>
-        <small class="list-group-item-text">01/01/2014</small>
-        <p>Expense description here even if it's very long</p>
+    <a href="#/expenses/edit/trip/{{ trip.id }}/expense/{{ expense.id }}" class="list-group-item" ng-repeat="expense in expenses" ng-swipe-right="delete(expense)" ng-swipe-left="edit(expense)">
+        <span class="badge">{{ expense.amount }} €</span>
+        <small class="list-group-item-text">{{ expense.date }}</small>
+        <p>{{ expense.description }}</p>
     </a>
     <a href="#/expense" class="list-group-item">
         <span class="badge">125.00 €</span>

@@ -6,10 +6,6 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap', 'ngTouch', 'services', 'c
 			controller: 'TripsCtrl',
 			templateUrl: 'views/trips.html'
 		})
-		.when('/setup', {
-			controller: 'SetupCtrl',
-			templateUrl: 'views/setup.html'
-		})
         .when('/trips/add', {
             controller: 'TripCtrl',
             templateUrl: 'views/trip.html'
@@ -18,13 +14,21 @@ angular.module('hollybee', ['ngRoute', 'ui.bootstrap', 'ngTouch', 'services', 'c
 			controller: 'TripCtrl',
 			templateUrl: 'views/trip.html'
 		})
-		.when('/expenses', {
-			controller: 'ExpenseCtrl',
+		.when('/expenses/:tripId', {
+			controller: 'ExpensesCtrl',
 			templateUrl: 'views/expenses.html'
 		})
-		.when('/expense', {
-			// controller: 'ExpenseCtrl',
+		.when('/expenses/add/:tripId', {
+			controller: 'ExpenseCtrl',
 			templateUrl: 'views/expense.html'
+		})
+		.when('/expenses/edit/trip/:tripId/expense/:expenseId', {
+			controller: 'ExpenseCtrl',
+			templateUrl: 'views/expense.html'
+		})
+		.when('/setup', {
+			controller: 'SetupCtrl',
+			templateUrl: 'views/setup.html'
 		})
 		.otherwise({
 			redirectTo: '/trips'

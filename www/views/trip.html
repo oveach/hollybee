@@ -5,9 +5,9 @@
 		Budget:<br/>
 		<button class="btn btn-default btn-lg">{{ trip.budget }} €</button>
 	</div>
-	<div class="pull-right">
+	<div class="pull-right text-right">
 		Total Expenses:<br/>
-		<a href="#/expenses" class="btn btn-success btn-lg">123.50 €</a>
+		<a href="#/expenses/{{ trip.id }}" class="btn btn-success btn-lg">{{ expensesTotal }} €</a>
 	</div>
 	<div class="clearfix"></div>
 </p>

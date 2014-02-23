@@ -1,0 +1,17 @@
+<div class="modal-header modal-header-warning">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4>Warning</h4>
+</div>
+<div class="modal-body">
+    <p>You're going to delete the following expense:</p>
+    <div class="list-group-item">
+        <span class="badge">{{ expense.amount }} €</span>
+        <small class="list-group-item-text">{{ expense.date }}</small>
+        <p>{{ expense.description }}</p>
+    </div>
+    <p>Are you sure ?</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger btn-lg" ng-click="delete(expense)">Delete</button>
+    <button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
+</div>

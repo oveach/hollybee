@@ -98,7 +98,7 @@ angular.module('controllers', [])
         expenseDelete.confirmDelete($routeParams.tripId, expense);
     };
 
-    $rootScope.$on('expenseDelete', function(event){
+    $scope.$on('expenseDelete', function(event){
         $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
     });
 })
@@ -128,7 +128,6 @@ angular.module('controllers', [])
     $scope.tripId = expenseDelete.tripId;
     $scope.delete = function(expense){
         expenseService.deleteExpense(expenseDelete.tripId, expense);
-        $scope.$emit('expenseDelete');
         $modalInstance.close();
         $location.path('/expenses/' + expenseDelete.tripId);
     };

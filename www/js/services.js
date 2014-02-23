@@ -48,7 +48,7 @@ angular.module('services', [])
 	};
 })
 
-.factory('expenseService', function($filter, trips){
+.factory('expenseService', function($filter, $rootScope, trips){
     return {
         tripId: null,
         expenses: {
@@ -101,9 +101,14 @@ angular.module('services', [])
             this.expenses.data.push(expense);
         },
         deleteExpense: function(tripId, expense){
+            var expenseId = expense.id;
             this.loadExpenses(tripId);
             this.expenses.data.splice(this.expenses.data.indexOf(expense), 1);
             this.persist();
+            $rootScope.$broadcast('expenseDelete', {
+                tripId: tripId,
+                expenseId: expenseId
+            });
         },
         persist: function(){
             var key = this.getExpenseKey(this.tripId);

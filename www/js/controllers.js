@@ -46,7 +46,9 @@ angular.module('controllers', [])
 .controller('TripCtrl', function($scope, $rootScope, $location, $routeParams, trips, tripDelete){
     // copy makes the model binding of angular work on a copy of the data
     // this prevents data to be modified without validation with the save button
-	$scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
+    if ($routeParams.tripId != null) {
+    	$scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
+    }
 	$scope.cancel = function(){
         $location.path('/');
     };

@@ -7,19 +7,19 @@ angular.module('services', [])
         trips = angular.fromJson(localStorage.trips);
     } else {
         // initial structure if empty
-    	trips = {
+        trips = {
             lastId: 0,
             data: []
         };
     }
 
-	return {
-		getTrips: function(){
-			return trips.data;
-		},
-		getTrip: function(id){
+    return {
+        getTrips: function(){
+            return trips.data;
+        },
+        getTrip: function(id){
             return $filter('filter')(trips.data, {id: id})[0];
-		},
+        },
         saveTrip: function(trip){
             // new trip ?
             if (trip.id == null) {
@@ -45,7 +45,7 @@ angular.module('services', [])
         persist: function(){
             localStorage.trips = angular.toJson(trips);
         }
-	};
+    };
 })
 
 .factory('expenseService', function($filter, $rootScope, trips){

@@ -1,55 +1,55 @@
 <h1>Trip detail</h1>
 
 <p>
-	<div class="pull-left">
-		Budget:<br/>
-		<button class="btn btn-default btn-lg">{{ trip.budget || 0 }} €</button>
-	</div>
-	<div class="pull-right text-right">
-		Total Expenses:<br/>
-		<a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal || 0 }} €</a>
-	</div>
-	<div class="clearfix"></div>
+    <div class="pull-left">
+        Budget:<br/>
+        <button class="btn btn-default btn-lg">{{ trip.budget || 0 }} €</button>
+    </div>
+    <div class="pull-right text-right">
+        Total Expenses:<br/>
+        <a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal || 0 }} €</a>
+    </div>
+    <div class="clearfix"></div>
 </p>
 
 <form role="form" ng-submit="save(trip)">
     <input type="hidden" id="id" ng-model="trip.id">
-	<div class="form-group">
-		<label for="name">Destination</label>
-		<input type="text" class="form-control" id="name" placeholder="Enter the destination" ng-model="trip.name">
-	</div>
-	<div class="form-group">
-		<label for="name">Start date</label>
-		<div class="input-group">
-			<input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate"
-				datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedStartDate" show-weeks="false"
-			>
-			<span class="input-group-btn">
-	                <button class="btn btn-default" ng-click="openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-	            </span>
-	        </div>
-		</div>
-	<div class="form-group">
-		<label for="name">End date</label>
-		<div class="input-group">
-			<input type="date" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate"
-				datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedEndDate" show-weeks="false"
-			>
-			<span class="input-group-btn">
+    <div class="form-group">
+        <label for="name">Destination</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter the destination" ng-model="trip.name">
+    </div>
+    <div class="form-group">
+        <label for="name">Start date</label>
+        <div class="input-group">
+            <input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate"
+                datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedStartDate" show-weeks="false"
+            >
+            <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+    <div class="form-group">
+        <label for="name">End date</label>
+        <div class="input-group">
+            <input type="date" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate"
+                datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedEndDate" show-weeks="false"
+            >
+            <span class="input-group-btn">
                 <button class="btn btn-default" ng-click="openEndDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </span>
         </div>
-	</div>
-	<div class="form-group">
-		<label for="name">Budget</label>
-		<div class="input-group">
-			<input type="number" class="form-control" id="budget" placeholder="Enter your planned budget" ng-model="trip.budget">
-			<span class="input-group-addon">€</span>
-		</div>
-	</div>
-	<p class="text-right">
-		<button type="submit" class="btn btn-primary btn-lg">Save</button>
-		<button class="btn btn-danger btn-lg" ng-click="delete(trip)" ng-show="trip.id">Delete</button>
-		<button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
-	</p>
+    </div>
+    <div class="form-group">
+        <label for="name">Budget</label>
+        <div class="input-group">
+            <input type="number" class="form-control" id="budget" placeholder="Enter your planned budget" ng-model="trip.budget">
+            <span class="input-group-addon">€</span>
+        </div>
+    </div>
+    <p class="text-right">
+        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        <button class="btn btn-danger btn-lg" ng-click="delete(trip)" ng-show="trip.id">Delete</button>
+        <button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
+    </p>
 </form>

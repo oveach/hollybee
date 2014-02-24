@@ -33,12 +33,12 @@ angular.module('controllers', [])
 })
 
 .controller('TripsCtrl', function($scope, $modal, $rootScope, $location, trips, tripDelete, expenseService){
-	$scope.trips = trips.getTrips();
+    $scope.trips = trips.getTrips();
     $scope.trips.forEach(function(trip){
         trip.budgetStatus = expenseService.getBudgetStatus(trip.id);
     });
 
-	$scope.delete = function(trip){
+    $scope.delete = function(trip){
         tripDelete.confirmDelete(trip);
     };
 
@@ -49,14 +49,14 @@ angular.module('controllers', [])
 
 .controller('DeleteTripCtrl', function($scope, $modal, $modalInstance, $location, trips, tripDelete){
     $scope.trip = tripDelete.trip;
-	$scope.delete = function(trip){
-		trips.deleteTrip(trip);
-		$modalInstance.close();
+    $scope.delete = function(trip){
+        trips.deleteTrip(trip);
+        $modalInstance.close();
         $location.path('/');
-	};
-	$scope.cancel = function(){
-		$modalInstance.close();
-	};
+    };
+    $scope.cancel = function(){
+        $modalInstance.close();
+    };
 })
 
 .controller('SetupCtrl', function($scope){
@@ -67,8 +67,8 @@ angular.module('controllers', [])
     // copy makes the model binding of angular work on a copy of the data
     // this prevents data to be modified without validation with the save button
     if ($routeParams.tripId != null) {
-    	$scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
-    	$scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
+        $scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
+        $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
     }
     $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
 
@@ -92,13 +92,13 @@ angular.module('controllers', [])
         $scope.openedEndDate = true;
     };
 
-	$scope.cancel = function(){
+    $scope.cancel = function(){
         $location.path('/');
     };
     $scope.save = function(trip){
         trips.saveTrip(trip);
-		$location.path('/');
-	};
+        $location.path('/');
+    };
     $scope.delete = function(trip){
         tripDelete.confirmDelete(trip);
     };

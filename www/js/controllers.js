@@ -72,6 +72,26 @@ angular.module('controllers', [])
     }
     $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
 
+    // date picker settings
+    $scope.datePickerOptions = {
+        'starting-day': 1,
+        'month-format': "'MM'"
+    };
+    $scope.format = 'dd/MM/yyyy';
+    $scope.openStartDate = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.openedStartDate = true;
+    };
+
+    $scope.openEndDate = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.openedEndDate = true;
+    };
+
 	$scope.cancel = function(){
         $location.path('/');
     };

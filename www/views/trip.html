@@ -20,11 +20,25 @@
 	</div>
 	<div class="form-group">
 		<label for="name">Start date</label>
-		<input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate">
-	</div>
+		<div class="input-group">
+			<input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate"
+				datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedStartDate" show-weeks="false"
+			>
+			<span class="input-group-btn">
+	                <button class="btn btn-default" ng-click="openStartDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+	            </span>
+	        </div>
+		</div>
 	<div class="form-group">
 		<label for="name">End date</label>
-		<input type="date" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate">
+		<div class="input-group">
+			<input type="date" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate"
+				datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedEndDate" show-weeks="false"
+			>
+			<span class="input-group-btn">
+                <button class="btn btn-default" ng-click="openEndDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
 	</div>
 	<div class="form-group">
 		<label for="name">Budget</label>

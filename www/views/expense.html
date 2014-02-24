@@ -5,8 +5,8 @@
     <div class="form-group">
         <label for="name">Date</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="expense.date"
-                datepicker-popup="{{format}}" datepicker-options="datePickerOptions" is-open="opened" show-weeks="false"
+            <input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="expense.date"
+                datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="opened" show-weeks="false"
             >
             <span class="input-group-btn">
                 <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -26,7 +26,7 @@
     </div>
     <p class="text-right">
         <button type="submit" class="btn btn-primary btn-lg">Save</button>
-        <button class="btn btn-danger btn-lg" ng-click="delete(expense)">Delete</button>
+        <button class="btn btn-danger btn-lg" ng-click="delete(expense)" ng-show="expense.id">Delete</button>
         <button class="btn btn-default btn-lg" ng-click="cancel()">Cancel</button>
     </p>
 </form>

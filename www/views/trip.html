@@ -7,7 +7,7 @@
 	</div>
 	<div class="pull-right text-right">
 		Total Expenses:<br/>
-		<a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal }} €</a>
+		<a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal || 0 }} €</a>
 	</div>
 	<div class="clearfix"></div>
 </p>

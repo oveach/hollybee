@@ -69,7 +69,7 @@ angular.module('services', [])
                     this.expenses = {
                         lastId: 0,
                         data: []
-                    }
+                    };
                 }
             }
         },
@@ -125,6 +125,10 @@ angular.module('services', [])
         getBudgetStatus: function(tripId){
             var total = this.getTotalForTrip(tripId);
             var trip = trips.getTrip(tripId);
+            // if trip doesn't exist, there's no problem for budget! :)
+            if (trip == null) {
+                return "success";
+            };
             // exceed budget ?
             if (total > trip.budget) {
                 return "danger";

@@ -68,8 +68,8 @@ angular.module('controllers', [])
     // this prevents data to be modified without validation with the save button
     if ($routeParams.tripId != null) {
     	$scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
+    	$scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
     }
-    $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
     $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
 
 	$scope.cancel = function(){

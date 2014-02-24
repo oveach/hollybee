@@ -6,7 +6,7 @@
     <p>You're going to delete the following expense:</p>
     <div class="list-group-item">
         <span class="badge">{{ expense.amount }} €</span>
-        <small class="list-group-item-text">{{ expense.date }}</small>
+        <small class="list-group-item-text">{{ expense.date | date: 'dd/MM/yyyy' }}</small>
         <p>{{ expense.description }}</p>
     </div>
     <p>Are you sure ?</p>

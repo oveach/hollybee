@@ -23,7 +23,7 @@
     <small>Tip: Swipe a line to the right to remove it.</small>
     <a href="#/expenses/edit/trip/{{ trip.id }}/expense/{{ expense.id }}" class="list-group-item" ng-repeat="expense in expenses" ng-swipe-right="delete(expense)" ng-swipe-left="edit(expense)">
         <span class="badge">{{ expense.amount }} €</span>
-        <small class="list-group-item-text">{{ expense.date }}</small>
+        <small class="list-group-item-text">{{ expense.date | date: 'dd/MM/yyyy' }}</small>
         <p>{{ expense.description }}</p>
     </a>
 </div>

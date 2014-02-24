@@ -110,7 +110,26 @@ angular.module('controllers', [])
     // this prevents data to be modified without validation with the save button
     if ($routeParams.expenseId != null) {
         $scope.expense = angular.copy(expenseService.getExpense($routeParams.tripId, $routeParams.expenseId));
+    } else {
+        // initialize date for new expense
+        $scope.expense = {
+            date: new Date()
+        };
     }
+    
+    // date picker settings
+    $scope.datePickerOptions = {
+        'starting-day': 1,
+        'month-format': "'MM'"
+    };
+    $scope.format = 'dd/MM/yyyy';
+    $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+    };
+    
     $scope.cancel = function(){
         $location.path('/expenses/' + $routeParams.tripId);
     };

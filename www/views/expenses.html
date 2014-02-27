@@ -7,7 +7,7 @@
 </div>
 <div class="row expenses-header">
     <div class="col-xs-4">
-        <a href="#/trips/edit/{{ trip.id }}" class="btn btn-default btn-lg">{{ trip.budget }} €</a>
+        <a href="#/trips/edit/{{ trip.id }}" class="btn btn-default btn-lg">{{ trip.budget | currency }}</a>
     </div>
     <div class="col-xs-4 text-center">
         <a href="#/expenses/add/{{ trip.id }}" class="btn btn-primary btn-lg">
@@ -15,14 +15,14 @@
         </a>
     </div>
     <div class="col-xs-4 text-right">
-        <button class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal }} €</button>
+        <button class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal | currency }}</button>
     </div>
 </div>
 
 <div id="expenses" class="list-group" ng-show="{{ expenses.length > 0 }}">
     <small>Tip: Swipe a line to the right to remove it.</small>
     <a href="#/expenses/edit/trip/{{ trip.id }}/expense/{{ expense.id }}" class="list-group-item" ng-repeat="expense in expenses | orderBy:'date':true" ng-swipe-right="delete(expense)" ng-swipe-left="edit(expense)">
-        <span class="badge">{{ expense.amount }} €</span>
+        <span class="badge">{{ expense.amount | currency }}</span>
         <small class="list-group-item-text">{{ expense.date | date: 'dd/MM/yyyy' }}</small>
         <p>{{ expense.description }}</p>
     </a>

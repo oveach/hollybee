@@ -3,11 +3,11 @@
 <p>
     <div class="pull-left">
         Budget:<br/>
-        <button class="btn btn-default btn-lg">{{ trip.budget || 0 }} €</button>
+        <button class="btn btn-default btn-lg">{{ (trip.budget || 0) | currency }}</button>
     </div>
     <div class="pull-right text-right">
         Total Expenses:<br/>
-        <a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ expensesTotal || 0 }} €</a>
+        <a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ (expensesTotal || 0) | currency }}</a>
     </div>
     <div class="clearfix"></div>
 </p>

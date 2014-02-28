@@ -172,6 +172,11 @@ angular.module('services', [])
             } else {
                 return "success";
             }
+        },
+        getBudgetRemaining: function(tripId){
+            var total = this.getTotalForTrip(tripId);
+            var trip = trips.getTrip(tripId);
+            return trip.budget - total;
         }
     };
 })

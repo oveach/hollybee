@@ -53,3 +53,7 @@ ul.nav li a {
 .expenses-header>div {
     padding: 0;
 }
+
+form#trip-form {
+    margin-top: 0.7em;
+}

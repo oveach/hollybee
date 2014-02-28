@@ -1,18 +1,21 @@
 <h1>Trip detail</h1>
 
-<p>
-    <div class="pull-left">
-        Budget:<br/>
-        <button class="btn btn-default btn-lg">{{ (trip.budget || 0) | currency }}</button>
+<div class="row expenses-header">
+    <div class="col-xs-4">Remaining:</div>
+    <div class="col-xs-4 text-center">Bud: {{ trip.budget | currency }}</div>
+    <div class="col-xs-4 text-right">Total Expenses:</div>
+</div>
+<div class="row expenses-header">
+    <div class="col-xs-4">
+        <button class="btn btn-default btn-lg">{{ ((trip.budget - expensesTotal) || 0) | currency }}</button>
     </div>
-    <div class="pull-right text-right">
-        Total Expenses:<br/>
+    <div class="col-xs-4 text-center"></div>
+    <div class="col-xs-4 text-right">
         <a href="#/expenses/{{ trip.id }}" class="btn btn-lg btn-{{ budgetStatus }}">{{ (expensesTotal || 0) | currency }}</a>
     </div>
-    <div class="clearfix"></div>
-</p>
+</div>
 
-<form role="form" ng-submit="save(trip)">
+<form role="form" ng-submit="save(trip)" id="trip-form">
     <input type="hidden" id="id" ng-model="trip.id">
     <div class="form-group">
         <label for="name">Destination</label>

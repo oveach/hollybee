@@ -26,6 +26,7 @@ ul.nav li a {
 	padding-bottom: 15px;
 }
 
+/* badge colors for statuses */
 .badge-success {
     background-color: #419641;
 }
@@ -38,12 +39,20 @@ ul.nav li a {
     background-color: #C12E2A;
 }
 
-#expenses {
-    margin-top: 2em;
+div.container {
+    padding: 0 8px;
 }
 
-#expenses a span.badge {
-    font-size: 1em;
+a.list-group-item {
+    padding: 6px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 10px;
+}
+
+#expenses {
+    margin-top: 2em;
 }
 
 .expenses-header {

@@ -24,7 +24,7 @@
     <div class="form-group">
         <label for="name">Start date</label>
         <div class="input-group">
-            <input type="date" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate"
+            <input type="text" class="form-control" id="startDate" placeholder="dd/mm/yyyy" ng-model="trip.startDate"
                 datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedStartDate" show-weeks="false"
             >
             <span class="input-group-btn">
@@ -35,7 +35,7 @@
     <div class="form-group">
         <label for="name">End date</label>
         <div class="input-group">
-            <input type="date" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate"
+            <input type="text" class="form-control" id="endDate" placeholder="dd/mm/yyyy" ng-model="trip.endDate"
                 datepicker-popup="{{ format }}" datepicker-options="datePickerOptions" is-open="openedEndDate" show-weeks="false"
             >
             <span class="input-group-btn">

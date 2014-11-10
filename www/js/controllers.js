@@ -1,4 +1,4 @@
-angular.module('controllers', [])
+angular.module('controllers', ['directives'])
 
 .factory('tripDelete', function($modal){
     return {
@@ -31,6 +31,18 @@ angular.module('controllers', [])
         }
     };
 })
+
+.controller('MenuCtrl', ['$scope', function($scope){
+    $scope.menuItems = [{
+        'glyph': 'globe',
+        'label': 'Trips',
+        'route': '#/trips'
+    },{
+        'glyph': 'wrench',
+        'label': 'Setup',
+        'route': '#/setup'
+    }];
+}])
 
 .controller('TripsCtrl', function($scope, $modal, $rootScope, $location, trips, tripDelete, expenseService){
     $scope.trips = trips.getTrips();

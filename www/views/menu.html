@@ -1,0 +1,7 @@
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <ul class="nav navbar-nav">
+        <li ng-repeat="item in items" nav-active>
+            <a ng-href="{{ item.route }}"><span class="glyphicon glyphicon-{{ item.glyph }}"></span> {{ item.label }}</a>
+        </li>
+    </ul>
+</nav>

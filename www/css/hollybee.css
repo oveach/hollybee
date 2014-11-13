@@ -3,6 +3,7 @@
 
 /* leave some space left for the menu in the bottom of page */
 body {
+    padding-top: 54px;
 	padding-bottom: 50px;
 }
 

@@ -1,9 +1,24 @@
-<h1>Trips list</h1>
-<p class="text-right">
-    <a class="btn btn-primary" role="button" href="#/trips/add">
-        <span class="glyphicon glyphicon-plus-sign"></span> Add new trip
-    </a>
-</p>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav pull-left">
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            </li>
+        </ul>
+        <h3 class="pull-left">Trips</h3>
+        <ul class="nav navbar-nav pull-right">
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+            <li>
+                <a href="#/trips/add"><span class="glyphicon glyphicon-plus"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<p>This is a test of the new mobile styled navbar.</p>
+
 <div class="list-group" ng-show="{{ trips.length > 0 }}">
     <small>Tip: Swipe a trip to the right to remove it.</small>
     <a href="#/trips/edit/{{ trip.id }}" class="list-group-item" ng-repeat="trip in trips | orderBy:'startDate':true" ng-swipe-right="delete(trip)" ng-swipe-left="edit(trip)">

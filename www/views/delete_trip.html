@@ -9,6 +9,12 @@
     <p>Are you sure ?</p>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-danger" ng-click="delete(trip)">Delete</button>
-    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <div class="row no-gutter">
+        <div class="col-xs-6">
+            <button class="btn btn-danger btn-block" ng-click="delete(trip)">Delete</button>
+        </div>
+        <div class="col-xs-6">
+            <button class="btn btn-default btn-block" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
 </div>

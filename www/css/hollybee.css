@@ -71,3 +71,8 @@ h1 {
 form#trip-form {
     margin-top: 0.7em;
 }
+
+.no-gutter > div[class^="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+}

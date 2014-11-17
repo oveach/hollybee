@@ -11,7 +11,7 @@
                 <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
             </li>
             <li>
-                <a href="#/trips/add"><span class="glyphicon glyphicon-plus"></span></a>
+                <a ui-sref="trips_add"><span class="glyphicon glyphicon-plus"></span></a>
             </li>
         </ul>
     </div>
@@ -21,7 +21,7 @@
 
 <div class="list-group" ng-show="{{ trips.length > 0 }}">
     <small>Tip: Swipe a trip to the right to remove it.</small>
-    <a href="#/trips/edit/{{ trip.id }}" class="list-group-item" ng-repeat="trip in trips | orderBy:'startDate':true" ng-swipe-right="delete(trip)" ng-swipe-left="edit(trip)">
+    <a ui-sref="trips_edit({tripId: trip.id})" class="list-group-item" ng-repeat="trip in trips | orderBy:'startDate':true" ng-swipe-right="delete(trip)" ng-swipe-left="edit(trip)">
         <span class="badge badge-{{ trip.budgetStatus }}">{{ trip.budget }} €</span>
         <h4 class="list-group-item-heading">{{ trip.name }}</h4>
         <small class="list-group-item-text">From {{ trip.startDate | date: 'dd/MM/yyyy' }} to {{ trip.endDate | date: 'dd/MM/yyyy' }}</small>

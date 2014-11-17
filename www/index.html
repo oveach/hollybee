@@ -6,7 +6,7 @@
     <title>Holly Bee!</title>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-i18n/angular-locale_fr-fr.js"></script>
-    <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="js/services.js"></script>
@@ -20,9 +20,9 @@
 <body>
     <div class="container">
 
-        <div ng-view></div>
+        <div ui-view></div>
 
-        <menu items="menuItems" ng-controller="MenuCtrl"></menu>
+        <!-- <menu items="menuItems" ng-controller="MenuCtrl"></menu> -->
 
     </div>
 

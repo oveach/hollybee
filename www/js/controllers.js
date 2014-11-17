@@ -44,7 +44,7 @@ angular.module('controllers', ['directives'])
     }];
 }])
 
-.controller('TripsCtrl', function($scope, $modal, $rootScope, $location, trips, tripDelete, expenseService){
+.controller('TripsCtrl', function($scope, $modal, $rootScope, $state, trips, tripDelete, expenseService){
     $scope.trips = trips.getTrips();
     $scope.trips.forEach(function(trip){
         trip.budgetStatus = expenseService.getBudgetStatus(trip.id);
@@ -55,16 +55,16 @@ angular.module('controllers', ['directives'])
     };
 
     $scope.edit = function(trip){
-        $location.path('/trips/edit/' + trip.id);
+        $state.go('trips_edit', {tripId: trip.id});
     };
 })
 
-.controller('DeleteTripCtrl', function($scope, $modal, $modalInstance, $location, trips, tripDelete){
+.controller('DeleteTripCtrl', function($scope, $modal, $modalInstance, $state, trips, tripDelete){
     $scope.trip = tripDelete.trip;
     $scope.delete = function(trip){
         trips.deleteTrip(trip);
         $modalInstance.close();
-        $location.path('/');
+        $state.go('trips');
     };
     $scope.cancel = function(){
         $modalInstance.close();
@@ -75,14 +75,14 @@ angular.module('controllers', ['directives'])
 
 })
 
-.controller('TripCtrl', function($scope, $rootScope, $location, $routeParams, trips, tripDelete, expenseService){
+.controller('TripCtrl', function($scope, $rootScope, $state, $stateParams, trips, tripDelete, expenseService){
     // copy makes the model binding of angular work on a copy of the data
     // this prevents data to be modified without validation with the save button
-    if ($routeParams.tripId != null) {
-        $scope.trip = angular.copy(trips.getTrip($routeParams.tripId));
-        $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
+    if ($stateParams.tripId != null) {
+        $scope.trip = angular.copy(trips.getTrip($stateParams.tripId));
+        $scope.expensesTotal = expenseService.getTotalForTrip($stateParams.tripId);
     }
-    $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
+    $scope.budgetStatus = expenseService.getBudgetStatus($stateParams.tripId);
 
     // date picker settings
     $scope.datePickerOptions = {
@@ -105,43 +105,46 @@ angular.module('controllers', ['directives'])
     };
 
     $scope.cancel = function(){
-        $location.path('/');
+        $state.go('trips');
     };
     $scope.save = function(trip){
         trips.saveTrip(trip);
-        $location.path('/');
+        $state.go('trips');
     };
     $scope.delete = function(trip){
         tripDelete.confirmDelete(trip);
     };
 })
 
-.controller('ExpensesCtrl', function($scope, $rootScope, $routeParams, $location, trips, expenseService, expenseDelete){
-    $scope.trip = trips.getTrip($routeParams.tripId);
-    $scope.expenses = expenseService.getExpenses($routeParams.tripId);
-    $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
-    $scope.budgetStatus = expenseService.getBudgetStatus($routeParams.tripId);
+.controller('ExpensesCtrl', function($scope, $rootScope, $stateParams, $state, trips, expenseService, expenseDelete){
+    $scope.trip = trips.getTrip($stateParams.tripId);
+    $scope.expenses = expenseService.getExpenses($stateParams.tripId);
+    $scope.expensesTotal = expenseService.getTotalForTrip($stateParams.tripId);
+    $scope.budgetStatus = expenseService.getBudgetStatus($stateParams.tripId);
 
     $scope.edit = function(expense){
-        $location.path('/expenses/edit/trip/' + $routeParams.tripId + '/expense/' + expense.id);
+        $state.go('trips_expenses_edit', {
+            tripId: $stateParams.tripId,
+            expenseId: expense.id
+        });
     };
 
     $scope.delete = function(expense){
-        expenseDelete.confirmDelete($routeParams.tripId, expense);
+        expenseDelete.confirmDelete($stateParams.tripId, expense);
     };
 
     $scope.$on('expenseDelete', function(event){
-        $scope.expensesTotal = expenseService.getTotalForTrip($routeParams.tripId);
+        $scope.expensesTotal = expenseService.getTotalForTrip($stateParams.tripId);
     });
 })
 
-.controller('ExpenseCtrl', function($scope, $routeParams, $location, trips, expenseService, expenseDelete){
-    $scope.trip = trips.getTrip($routeParams.tripId);
+.controller('ExpenseCtrl', function($scope, $stateParams, $state, trips, expenseService, expenseDelete){
+    $scope.trip = trips.getTrip($stateParams.tripId);
 
     // copy makes the model binding of angular work on a copy of the data
     // this prevents data to be modified without validation with the save button
-    if ($routeParams.expenseId != null) {
-        $scope.expense = angular.copy(expenseService.getExpense($routeParams.tripId, $routeParams.expenseId));
+    if ($stateParams.expenseId != null) {
+        $scope.expense = angular.copy(expenseService.getExpense($stateParams.tripId, $stateParams.expenseId));
     } else {
         // initialize date for new expense
         $scope.expense = {
@@ -163,24 +166,24 @@ angular.module('controllers', ['directives'])
     };
     
     $scope.cancel = function(){
-        $location.path('/expenses/' + $routeParams.tripId);
+        $state.go('trips_expenses', {tripId: $stateParams.tripId});
     };
     $scope.save = function(expense){
-        expenseService.saveExpense($routeParams.tripId, expense);
-        $location.path('/expenses/' + $routeParams.tripId);
+        expenseService.saveExpense($stateParams.tripId, expense);
+        $state.go('trips_expenses', {tripId: $stateParams.tripId});
     };
     $scope.delete = function(expense){
-        expenseDelete.confirmDelete($routeParams.tripId, expense);
+        expenseDelete.confirmDelete($stateParams.tripId, expense);
     };
 })
 
-.controller('DeleteExpenseCtrl', function($scope, $modal, $modalInstance, $location, expenseService, expenseDelete){
+.controller('DeleteExpenseCtrl', function($scope, $modal, $modalInstance, $state, expenseService, expenseDelete){
     $scope.expense = expenseDelete.expense;
     $scope.tripId = expenseDelete.tripId;
     $scope.delete = function(expense){
         expenseService.deleteExpense(expenseDelete.tripId, expense);
         $modalInstance.close();
-        $location.path('/expenses/' + expenseDelete.tripId);
+        $state.go('trips_expenses', {tripId: expenseDelete.tripId});
     };
     $scope.cancel = function(){
         $modalInstance.close();

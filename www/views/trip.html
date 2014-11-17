@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-4 text-center"></div>
     <div class="col-xs-4 text-right">
-        <a href="#/expenses/{{ trip.id }}" class="btn btn-{{ budgetStatus }}">{{ (expensesTotal || 0) | currency }}</a>
+        <a ui-sref="trips_expenses({tripId: trip.id})" class="btn btn-{{ budgetStatus }}">{{ (expensesTotal || 0) | currency }}</a>
     </div>
 </div>
 

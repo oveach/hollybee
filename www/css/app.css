@@ -43,3 +43,9 @@
        local('Roboto-Regular'),
        url(../fonts/Roboto-Regular.ttf) format('truetype');
 }
+
+.badge {
+  border-radius: 50px;
+  padding: 2px 8px;
+  background-color: #CCCCCC;
+}

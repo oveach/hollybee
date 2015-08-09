@@ -1,21 +1,14 @@
-angular.module('hollybee', ['ngMaterial'])
+angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers'])
 
-.controller('AppCtrl', ['$scope', function($scope){
-    $scope.testBtnClick = function(){
-        alert("test button clicked!");
-    };
-
-    $scope.trips = [{
-        name: "Roma",
-        startDate: new Date(),
-        endDate: new Date(),
-        budget: 500
-    },{
-        name: "Paris",
-        startDate: new Date(),
-        endDate: new Date(),
-        budget: 8000
-    }];
-}])
+.config(function($stateProvider, $urlRouterProvider){
+    $urlRouterProvider.otherwise('/trips');
+    $stateProvider
+    .state('trips', {
+        url: '/trips',
+        controller: 'TripsCtrl',
+        templateUrl: 'views/trips.html'
+    })
+    ;
+})
 
 ;

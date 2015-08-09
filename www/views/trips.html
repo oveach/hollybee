@@ -1,0 +1,24 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+    <span class="md-title">Trips</span>
+    <span flex></span>
+    <md-button class="md-icon-button">
+        <md-icon>add</md-icon>
+    </md-button>
+    </div>
+</md-toolbar>
+
+<md-content>
+    <md-list>
+        <md-list-item ng-repeat="trip in trips">
+            <div class="md-list-item-text">
+                <p>
+                    <strong>{{ trip.name }}</strong><br/>
+                    {{ trip.startDate | date:'dd/MM/yyyy' }} <md-icon>arrow_forward</md-icon> {{ trip.endDate | date:'dd/MM/yyyy' }}
+                </p>
+            </div>
+            <span flex></span>
+            <div class="badge">{{ trip.budget }} €</div>
+        </md-list-item>
+    </md-list>
+</md-content>

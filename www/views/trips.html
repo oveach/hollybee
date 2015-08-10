@@ -1,16 +1,16 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-    <span class="md-title">Trips</span>
-    <span flex></span>
-    <md-button class="md-icon-button">
-        <md-icon>add</md-icon>
-    </md-button>
+        <span class="md-title">Trips</span>
+        <span flex></span>
+        <md-button class="md-icon-button">
+            <md-icon>add</md-icon>
+        </md-button>
     </div>
 </md-toolbar>
 
 <md-content>
     <md-list>
-        <md-list-item ng-repeat="trip in trips">
+        <md-list-item ng-repeat="trip in trips" ng-click="viewTrip(trip.id)">
             <div class="md-list-item-text">
                 <p>
                     <strong>{{ trip.name }}</strong><br/>
@@ -19,6 +19,7 @@
             </div>
             <span flex></span>
             <div class="badge">{{ trip.budget }} €</div>
+            <md-divider></md-divider>
         </md-list-item>
     </md-list>
 </md-content>

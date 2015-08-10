@@ -1,4 +1,4 @@
-angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers'])
+angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers', 'services'])
 
 .config(function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/trips');
@@ -7,6 +7,11 @@ angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers'])
         url: '/trips',
         controller: 'TripsCtrl',
         templateUrl: 'views/trips.html'
+    })
+    .state('trips_trip', {
+        url: '/trips/:idTrip',
+        controller: 'TripCtrl',
+        templateUrl: 'views/trip.html'
     })
     ;
 })

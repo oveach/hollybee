@@ -44,8 +44,20 @@
        url(../fonts/Roboto-Regular.ttf) format('truetype');
 }
 
+/* add missing badge class (design inspired by Bootstrap framework) */
 .badge {
   border-radius: 50px;
   padding: 2px 8px;
   background-color: #CCCCCC;
+}
+
+/* fix height when list item is clickable */
+md-list-item.md-clickable button.md-button {
+  line-height: inherit;
+  min-height: inherit;
+}
+
+/* fix icon width for toolbars (takes too much space by default) */
+md-toolbar .md-button.md-icon-button {
+  width: auto !important;
 }

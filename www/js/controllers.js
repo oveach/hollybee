@@ -7,11 +7,11 @@ angular.module('controllers', [])
     });
 
     $scope.viewTrip = function(idTrip){
-        $state.go("trips_trip", {idTrip: idTrip});
+        $state.go("trip_detail", {idTrip: idTrip});
     };
 }])
 
-.controller('TripCtrl', ['$scope', '$stateParams', 'tripService', function($scope, $stateParams, tripService){
+.controller('TripDetailCtrl', ['$scope', '$stateParams', 'tripService', function($scope, $stateParams, tripService){
     tripService.getTrip($stateParams.idTrip)
     .then(function(trip){
         $scope.trip = trip;
@@ -48,6 +48,20 @@ angular.module('controllers', [])
         amount: 123.90,
         date: new Date()
     }];
+}])
+
+.controller('TripFormCtrl', ['$scope', '$state', '$stateParams', 'tripService', function($scope, $state, $stateParams, tripService){
+    tripService.getTrip($stateParams.idTrip)
+    .then(function(trip){
+        $scope.trip = angular.copy(trip);
+    });
+
+    $scope.save = function(){
+        tripService.saveTrip($scope.trip)
+        .then(function(trip){
+            $state.go("trip_detail", {idTrip: trip.id});
+        })
+    };
 }])
 
 ;

@@ -8,10 +8,15 @@ angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers', 'services'
         controller: 'TripsCtrl',
         templateUrl: 'views/trips.html'
     })
-    .state('trips_trip', {
+    .state('trip_detail', {
+        url: '/trips/:idTrip/detail',
+        controller: 'TripDetailCtrl',
+        templateUrl: 'views/trip_detail.html'
+    })
+    .state('trip_form', {
         url: '/trips/:idTrip',
-        controller: 'TripCtrl',
-        templateUrl: 'views/trip.html'
+        controller: 'TripFormCtrl',
+        templateUrl: 'views/trip_form.html'
     })
     ;
 })

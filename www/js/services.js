@@ -32,6 +32,22 @@ angular.module('services', [])
             });
             deferred.resolve(trip);
             return deferred.promise;
+        },
+        saveTrip: function(newTrip){
+            var deferred = $q.defer();
+            if (newTrip.id) {
+                angular.forEach(trips, function(item, idx){
+                    if (item.id == newTrip.id) {
+                        trips[idx] = newTrip;
+                        return;
+                    }
+                });
+            } else {
+                newTrip.id = trips.length + 1;
+                trips.push(newTrip);
+            }
+            deferred.resolve(newTrip);
+            return deferred.promise;
         }
     };
 }])

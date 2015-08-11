@@ -61,3 +61,7 @@ md-list-item.md-clickable button.md-button {
 md-toolbar .md-button.md-icon-button {
   width: auto !important;
 }
+
+.fixed {
+  position: fixed !important;
+}

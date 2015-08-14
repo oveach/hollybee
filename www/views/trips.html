@@ -9,7 +9,11 @@
 </md-toolbar>
 
 <md-content>
-    <md-list>
+    <div ng-if="!trips || trips.length == 0" layout="column" layout-align="center center">
+        <p>You have no trip yet.</p>
+        <div><md-button class="md-raised md-primary" ui-sref="trip_form">Create new trip</md-button></div>
+    </div>
+    <md-list ng-if="trips">
         <md-list-item ng-repeat="trip in trips" ng-click="viewTrip(trip.id)">
             <div class="md-list-item-text">
                 <p>

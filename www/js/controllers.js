@@ -11,7 +11,8 @@ angular.module('controllers', [])
     };
 }])
 
-.controller('TripDetailCtrl', ['$scope', '$stateParams', 'tripService', function($scope, $stateParams, tripService){
+.controller('TripDetailCtrl', ['$scope', '$state', '$stateParams', '$mdDialog', 'tripService',
+function($scope, $state, $stateParams, $mdDialog, tripService){
     tripService.getTrip($stateParams.idTrip)
     .then(function(trip){
         $scope.trip = trip;
@@ -48,6 +49,20 @@ angular.module('controllers', [])
         amount: 123.90,
         date: new Date()
     }];
+
+    $scope.deleteTrip = function(idTrip){
+        var confirm = $mdDialog.confirm()
+            .title("Delete trip ?")
+            .content("You're going to delete trip with all expenses!")
+            .ok("Delete")
+            .cancel("Cancel")
+            ;
+        $mdDialog.show(confirm).then(function(){
+            tripService.deleteTrip(idTrip).then(function(){
+                $state.go("trips");
+            })
+        })
+    }
 }])
 
 .controller('TripFormCtrl', ['$scope', '$state', '$stateParams', 'tripService', function($scope, $state, $stateParams, tripService){

@@ -48,6 +48,17 @@ angular.module('services', [])
             }
             deferred.resolve(newTrip);
             return deferred.promise;
+        },
+        deleteTrip: function(idTrip){
+            var deferred = $q.defer();
+            angular.forEach(trips, function(item, idx){
+                if (item.id == idTrip) {
+                    trips.splice(idx, 1);
+                    return;
+                }
+            });
+            deferred.resolve();
+            return deferred.promise;
         }
     };
 }])

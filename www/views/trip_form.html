@@ -1,9 +1,9 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" ui-sref="trip_detail({idTrip: trip.id})">
+        <md-button class="md-icon-button" ng-click="goBack()">
             <md-icon>arrow_back</md-icon>
         </md-button>
-        <!-- <span class="md-title">Trip</span> -->
+        <span class="md-title">{{ title }}</span>
         <span flex></span>
     </div>
 </md-toolbar>
@@ -30,7 +30,7 @@
             <md-button class="md-raised md-primary" ng-click="save()">
                 Save
             </md-button>
-            <md-button class="md-raised" ui-sref="trip_detail({idTrip: trip.id})">
+            <md-button class="md-raised" ng-click="goBack()">
                 Cancel
             </md-button>
         </div>

@@ -77,6 +77,20 @@ function($scope, $state, $stateParams, $mdDialog, tripService){
             $state.go("trip_detail", {idTrip: trip.id});
         })
     };
+
+    $scope.goBack = function(){
+        if ($stateParams.idTrip == "") {
+            $state.go("trips");
+        } else {
+            $state.go("trip_detail", {idTrip: $stateParams.idTrip});
+        }
+    };
+
+    if ($stateParams.idTrip == "") {
+        $scope.title = "New trip";
+    } else {
+        $scope.title = "Edit trip";
+    }
 }])
 
 ;

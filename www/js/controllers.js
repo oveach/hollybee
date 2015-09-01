@@ -62,7 +62,21 @@ function($scope, $state, $stateParams, $mdDialog, tripService){
                 $state.go("trips");
             })
         })
-    }
+    };
+
+    $scope.showPreviousTrip = function(){
+        tripService.getPreviousTrip($scope.trip)
+        .then(function(prevTrip){
+            $state.go("trip_detail", {idTrip: prevTrip.id});
+        });
+    };
+
+    $scope.showNextTrip = function(){
+        tripService.getNextTrip($scope.trip)
+        .then(function(nextTrip){
+            $state.go("trip_detail", {idTrip: nextTrip.id});
+        });
+    };
 }])
 
 .controller('TripFormCtrl', ['$scope', '$state', '$stateParams', 'tripService', function($scope, $state, $stateParams, tripService){

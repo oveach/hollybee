@@ -59,6 +59,26 @@ angular.module('services', [])
             });
             deferred.resolve();
             return deferred.promise;
+        },
+        getPreviousTrip: function(trip){
+            var deferred = $q.defer();
+            var currentTripPos = trips.indexOf(trip);
+            if (currentTripPos > 0) {
+                deferred.resolve(trips[currentTripPos - 1]);
+            } else {
+                deferred.reject("Top of list reached: no previous trip");
+            }
+            return deferred.promise;
+        },
+        getNextTrip: function(trip){
+            var deferred = $q.defer();
+            var currentTripPos = trips.indexOf(trip);
+            if (currentTripPos < trips.length - 1) {
+                deferred.resolve(trips[currentTripPos + 1]);
+            } else {
+                deferred.reject("Bottom of list reached: no next trip");
+            }
+            return deferred.promise;
         }
     };
 }])

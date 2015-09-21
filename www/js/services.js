@@ -1,83 +1,82 @@
 angular.module('services', [])
 
-.factory('tripService', ['$q', function($q){
-    var trips = [{
-        id: 1,
-        name: "Roma",
-        startDate: new Date(),
-        endDate: new Date(),
-        budget: 500
-    },{
-        id: 2,
-        name: "Paris",
-        startDate: new Date(),
-        endDate: new Date(),
-        budget: 8000
-    }];
-
+.factory('tripService', ['$q', 'ngDexie', function($q, ngDexie){
     return {
         getTrips: function(){
             var deferred = $q.defer();
-            deferred.resolve(trips);
+            ngDexie.getDb(function(db){
+                db.trips.orderBy('startDate').toArray().then(function(trips){
+                    deferred.resolve(trips);
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
             return deferred.promise;
         },
         getTrip: function(idTrip){
             var deferred = $q.defer();
-            var trip = null;
-            angular.forEach(trips, function(item, idx){
-                if (item.id == idTrip) {
-                    trip = item;
-                    return;
-                }
+            ngDexie.getDb(function(db){
+                db.trips.get(parseInt(idTrip)).then(function(trip){
+                    deferred.resolve(trip);
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
             });
-            deferred.resolve(trip);
             return deferred.promise;
         },
         saveTrip: function(newTrip){
             var deferred = $q.defer();
-            if (newTrip.id) {
-                angular.forEach(trips, function(item, idx){
-                    if (item.id == newTrip.id) {
-                        trips[idx] = newTrip;
-                        return;
-                    }
+            ngDexie.getDb(function(db){
+                db.trips.put(newTrip).then(function(id){
+                    newTrip.id = id;
+                    deferred.resolve(newTrip);
+                }, function(rejection){
+                    deferred.reject(rejection);
                 });
-            } else {
-                newTrip.id = trips.length + 1;
-                trips.push(newTrip);
-            }
-            deferred.resolve(newTrip);
+            });
             return deferred.promise;
         },
         deleteTrip: function(idTrip){
             var deferred = $q.defer();
-            angular.forEach(trips, function(item, idx){
-                if (item.id == idTrip) {
-                    trips.splice(idx, 1);
-                    return;
-                }
+            ngDexie.getDb(function(db){
+                db.trips.delete(parseInt(idTrip)).then(function(){
+                    deferred.resolve();
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
             });
-            deferred.resolve();
             return deferred.promise;
         },
-        getPreviousTrip: function(trip){
+        getPreviousTrip: function(trip, attribute){
             var deferred = $q.defer();
-            var currentTripPos = trips.indexOf(trip);
-            if (currentTripPos > 0) {
-                deferred.resolve(trips[currentTripPos - 1]);
-            } else {
-                deferred.reject("Top of list reached: no previous trip");
-            }
+            ngDexie.getDb(function(db){
+                db.trips.where(attribute).below(trip[attribute]).limit(1)
+                .first(function(trip){
+                    if (typeof trip == "undefined") {
+                        deferred.reject("Top of list reached: no previous trip");
+                    } else {
+                        deferred.resolve(trip);
+                    }
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
             return deferred.promise;
         },
-        getNextTrip: function(trip){
+        getNextTrip: function(trip, attribute){
             var deferred = $q.defer();
-            var currentTripPos = trips.indexOf(trip);
-            if (currentTripPos < trips.length - 1) {
-                deferred.resolve(trips[currentTripPos + 1]);
-            } else {
-                deferred.reject("Bottom of list reached: no next trip");
-            }
+            ngDexie.getDb(function(db){
+                db.trips.where(attribute).above(trip[attribute]).limit(1)
+                .first(function(trip){
+                    if (typeof trip == "undefined") {
+                        deferred.reject("Bottom of list reached: no next trip");
+                    } else {
+                        deferred.resolve(trip);
+                    }
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
             return deferred.promise;
         }
     };

@@ -1,6 +1,6 @@
-angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers', 'services'])
+angular.module('hollybee', ['ui.router', 'ngMaterial', 'ngdexie', 'ngdexie.ui', 'controllers', 'services'])
 
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, ngDexieProvider){
     $urlRouterProvider.otherwise('/trips');
     $stateProvider
     .state('trips', {
@@ -19,6 +19,14 @@ angular.module('hollybee', ['ui.router', 'ngMaterial', 'controllers', 'services'
         templateUrl: 'views/trip_form.html'
     })
     ;
+
+    ngDexieProvider.setOptions({name: 'hollybee', debug: false});
+    ngDexieProvider.setConfiguration(function(db) {
+        db.version(1).stores({
+            trips: "++id, name, startDate",
+            expenses: "++id, date"
+        });
+    });
 })
 
 ;

@@ -1,0 +1,49 @@
+{
+  "name": "NgDexie",
+  "version": "0.0.16",
+  "authors": [
+    "Martin Diphoorn <m.diphoorn@flusso.nl>"
+  ],
+  "description": "AngularJS wrapper for Dexie.js",
+  "main": "build/ngDexie.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "indexeddb",
+    "dexiejs",
+    "angular"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/FlussoBV/NgDexie",
+  "ignore": [
+    ".*",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "config",
+    "src",
+    "test",
+    "tests",
+    "example",
+    "files.js",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "angular": ">= 1.2.0",
+    "dexie": "~1.1.0"
+  },
+  "_release": "0.0.16",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.16",
+    "commit": "1c269c7425af1474accd1099c8b0d2cd836b66fd"
+  },
+  "_source": "git://github.com/FlussoBV/NgDexie.git",
+  "_target": "~0.0.16",
+  "_originalSource": "ng-dexie",
+  "_direct": true
+}

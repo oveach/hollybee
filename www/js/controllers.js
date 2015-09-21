@@ -65,14 +65,14 @@ function($scope, $state, $stateParams, $mdDialog, tripService){
     };
 
     $scope.showPreviousTrip = function(){
-        tripService.getPreviousTrip($scope.trip)
+        tripService.getPreviousTrip($scope.trip, "startDate")
         .then(function(prevTrip){
             $state.go("trip_detail", {idTrip: prevTrip.id});
         });
     };
 
     $scope.showNextTrip = function(){
-        tripService.getNextTrip($scope.trip)
+        tripService.getNextTrip($scope.trip, "startDate")
         .then(function(nextTrip){
             $state.go("trip_detail", {idTrip: nextTrip.id});
         });

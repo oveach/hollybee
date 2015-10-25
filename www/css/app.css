@@ -70,3 +70,9 @@ md-toolbar .md-button.md-icon-button {
   background-color: #DDD;
   font-weight: bold;
 }
+
+.card-title {
+  font-weight: bold;
+  padding: 8px;
+  background-color: #EEE;
+}

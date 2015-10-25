@@ -17,17 +17,28 @@
 <md-content md-swipe-left="showNextTrip()" md-swipe-right="showPreviousTrip()">
 
     <md-card>
+        <div class="card-title">{{ trip.name }}</div>
         <md-card-content>
-            <h4>{{ trip.name }}</h4>
             <div layout="row">
-                <div>From: {{ trip.startDate | date:'dd/MM/yyyy' }}</div>
+                <div layout="column" layout-align="start end">
+                    <div>From:</div>
+                    <div>Until:</div>
+                </div>
                 <span flex></span>
-                <div>Budget: {{ trip.budget }} €</div>
-            </div>
-            <div layout="row">
-                <div>Until: {{ trip.endDate | date:'dd/MM/yyyy' }}</div>
+                <div layout="column">
+                    <div>{{ trip.startDate | date:'dd/MM/yyyy' }}</div>
+                    <div>{{ trip.endDate | date:'dd/MM/yyyy' }}</div>
+                </div>
+                <span flex="15"></span>
+                <div layout="column" layout-align="start end">
+                    <div>Budget:</div>
+                    <div>Remaining:</div>
+                </div>
                 <span flex></span>
-                <div>Remaining: 120 €</div>
+                <div layout="column" layout-align="start end">
+                    <div>{{ trip.budget }} €</div>
+                    <div>12 €</div>
+                </div>
             </div>
         </md-card-content>
     </md-card>

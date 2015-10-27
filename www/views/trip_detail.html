@@ -46,17 +46,19 @@
     <md-subheader>Expenses</md-subheader>
 
     <md-list>
-        <md-list-item ng-repeat="expense in expenses" ng-init="totalExpenses = 0">
-            <div class="md-list-item-text">
-                {{ expense.label }}<br/>
-                {{ expense.date | date:'dd/MM HH:mm' }}
-            </div>
-            <span flex></span>
-            <div ng-init="$parent.totalExpenses = $parent.totalExpenses + expense.amount">
-                {{ expense.amount | number:2 }} €
-            </div>
+        <div ng-repeat="expense in expenses" ng-init="totalExpenses = 0" ui-sref="expense_form({idTrip: trip.id, idExpense: expense.id})">
+            <md-list-item>
+                <div class="md-list-item-text">
+                    {{ expense.label }}<br/>
+                    {{ expense.date | date:'dd/MM HH:mm' }}
+                </div>
+                <span flex></span>
+                <div ng-init="$parent.totalExpenses = $parent.totalExpenses + expense.amount">
+                    {{ expense.amount | number:2 }} €
+                </div>
+            </md-list-item>
             <md-divider></md-divider>
-        </md-list-item>
+        </div>
         <md-list-item class="footer">
             <div class="md-list-item-text">
                 Total
@@ -70,7 +72,7 @@
     <!-- to prevent FAB button overflowing content -->
     <div style="height: 76px"></div>
 
-    <md-button class="md-fab md-fab-bottom-right fixed">
+    <md-button class="md-fab md-fab-bottom-right fixed" ui-sref="expense_form({idTrip: trip.id})">
         <md-icon>create</md-icon>
     </md-button>
 

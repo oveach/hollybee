@@ -107,4 +107,9 @@ function($scope, $state, $stateParams, $mdDialog, tripService){
     }
 }])
 
+.controller('ExpenseFormCtrl', ['$scope', '$stateParams',
+function($scope, $stateParams){
+    $scope.idTrip = $stateParams.idTrip;
+}])
+
 ;

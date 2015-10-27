@@ -18,6 +18,11 @@ angular.module('hollybee', ['ui.router', 'ngMaterial', 'ngdexie', 'ngdexie.ui', 
         controller: 'TripFormCtrl',
         templateUrl: 'views/trip_form.html'
     })
+    .state('expense_form', {
+        url: '/trips/:idTrip/expenses/:idExpense',
+        controller: 'ExpenseFormCtrl',
+        templateUrl: 'views/expense_form.html'
+    })
     ;
 
     ngDexieProvider.setOptions({name: 'hollybee', debug: false});

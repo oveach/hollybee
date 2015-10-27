@@ -67,12 +67,12 @@ md-toolbar .md-button.md-icon-button {
 }
 
 .footer {
-  background-color: #DDD;
+  background-color: #EEE;
   font-weight: bold;
 }
 
 .card-title {
   font-weight: bold;
   padding: 8px;
-  background-color: #EEE;
+  background-color: #DDD;
 }

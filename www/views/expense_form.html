@@ -1,0 +1,34 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" ui-sref="trip_detail({idTrip: idTrip})">
+            <md-icon>arrow_back</md-icon>
+        </md-button>
+        <span class="md-title">Expense</span>
+        <span flex></span>
+    </div>
+</md-toolbar>
+
+<md-content>
+    <form ng-submit="save()">
+        <md-input-container>
+            <label>Name</label>
+            <input ng-model="expense.label">
+        </md-input-container>
+        <md-input-container>
+            <label>Amount</label>
+            <input type="number" step="0.01" min="0" ng-model="expense.amount">
+        </md-input-container>
+        <md-input-container>
+            <label>Date</label>
+            <input type="date" ng-model="expense.date">
+        </md-input-container>
+        <div layout="row" layout-align="center">
+            <md-button class="md-raised md-primary">
+                Save
+            </md-button>
+            <md-button class="md-raised" ui-sref="trip_detail({idTrip: idTrip})">
+                Cancel
+            </md-button>
+        </div>
+    </form>
+</md-content>

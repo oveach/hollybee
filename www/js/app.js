@@ -31,6 +31,10 @@ angular.module('hollybee', ['ui.router', 'ngMaterial', 'ngdexie', 'ngdexie.ui', 
             trips: "++id, name, startDate",
             expenses: "++id, date"
         });
+        db.version(2).stores({
+            trips: "++id, name, startDate",
+            expenses: "++id, idTrip, date"
+        });
     });
 })
 

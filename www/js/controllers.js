@@ -11,52 +11,26 @@ angular.module('controllers', [])
     };
 }])
 
-.controller('TripDetailCtrl', ['$scope', '$state', '$stateParams', '$mdDialog', 'tripService',
-function($scope, $state, $stateParams, $mdDialog, tripService){
+.controller('TripDetailCtrl', ['$scope', '$state', '$stateParams', '$mdDialog', 'tripService', 'expenseService',
+function($scope, $state, $stateParams, $mdDialog, tripService, expenseService){
     tripService.getTrip($stateParams.idTrip)
     .then(function(trip){
         $scope.trip = trip;
     });
 
-    $scope.expenses = [{
-        id: 1,
-        label: "Lorem ipsum",
-        amount: 10.50,
-        date: new Date()
-    },{
-        id: 2,
-        label: "Lorem ipsum",
-        amount: 25,
-        date: new Date()
-    },{
-        id: 3,
-        label: "Lorem ipsum",
-        amount: 123.90,
-        date: new Date()
-    },{
-        id: 4,
-        label: "Lorem ipsum",
-        amount: 10.50,
-        date: new Date()
-    },{
-        id: 5,
-        label: "Lorem ipsum",
-        amount: 25,
-        date: new Date()
-    },{
-        id: 6,
-        label: "Lorem ipsum",
-        amount: 123.90,
-        date: new Date()
-    }];
+    expenseService.getExpenses($stateParams.idTrip)
+    .then(function(expenses){
+        $scope.expenses = expenses;
+    });
 
     $scope.deleteTrip = function(idTrip){
         var confirm = $mdDialog.confirm()
-            .title("Delete trip ?")
+            .title("Delete trip?")
             .content("You're going to delete trip with all expenses!")
             .ok("Delete")
             .cancel("Cancel")
             ;
+        // TODO: cascade delete all expenses
         $mdDialog.show(confirm).then(function(){
             tripService.deleteTrip(idTrip).then(function(){
                 $state.go("trips");
@@ -107,9 +81,39 @@ function($scope, $state, $stateParams, $mdDialog, tripService){
     }
 }])
 
-.controller('ExpenseFormCtrl', ['$scope', '$stateParams',
-function($scope, $stateParams){
+.controller('ExpenseFormCtrl', ['$scope', '$stateParams', '$state', '$mdDialog', 'expenseService',
+function($scope, $stateParams, $state, $mdDialog, expenseService){
     $scope.idTrip = $stateParams.idTrip;
+
+    expenseService.getExpense($stateParams.idExpense)
+    .then(function(expense){
+        $scope.expense = expense;
+    });
+
+    $scope.save = function(expense){
+        // automatically assign trip to expense
+        expense.idTrip = $stateParams.idTrip;
+        // save expense in db
+        expenseService.saveExpense(expense)
+        .then(function(expense){
+            $state.go("trip_detail", {idTrip: $stateParams.idTrip});
+        });
+    };
+
+    $scope.deleteExpense = function(idExpense){
+        var confirm = $mdDialog.confirm()
+            .title("Delete expense?")
+            .content("Are you sure you want to delete this expense?")
+            .ok("Delete")
+            .cancel("Cancel")
+            ;
+        $mdDialog.show(confirm).then(function(){
+            expenseService.deleteExpense(idExpense)
+            .then(function(){
+                $state.go("trip_detail", {idTrip: $stateParams.idTrip});
+            });
+        })
+    }
 }])
 
 ;

@@ -45,8 +45,10 @@
 
     <md-subheader>Expenses</md-subheader>
 
-    <md-list>
-        <div ng-repeat="expense in expenses" ng-init="totalExpenses = 0" ui-sref="expense_form({idTrip: trip.id, idExpense: expense.id})">
+    <p layout-padding ng-if="!expenses || expenses.length == 0">You have no expense yet. Add some with pencil button.</p>
+
+    <md-list ng-init="totalExpenses = 0">
+        <div ng-repeat="expense in expenses" ui-sref="expense_form({idTrip: trip.id, idExpense: expense.id})">
             <md-list-item>
                 <div class="md-list-item-text">
                     {{ expense.label }}<br/>
@@ -59,9 +61,9 @@
             </md-list-item>
             <md-divider></md-divider>
         </div>
-        <md-list-item class="footer">
+        <md-list-item class="footer" ng-if="expenses.length > 0">
             <div class="md-list-item-text">
-                Total
+                <strong>Total</strong>
             </div>
             <span flex></span>
             <div>{{ totalExpenses | number:2 }} €</div>

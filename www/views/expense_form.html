@@ -5,11 +5,14 @@
         </md-button>
         <span class="md-title">Expense</span>
         <span flex></span>
+        <md-button class="md-icon-button" ng-click="deleteExpense(expense.id)">
+            <md-icon>delete</md-icon>
+        </md-button>
     </div>
 </md-toolbar>
 
 <md-content>
-    <form ng-submit="save()">
+    <form ng-submit="save(expense)">
         <md-input-container>
             <label>Name</label>
             <input ng-model="expense.label">

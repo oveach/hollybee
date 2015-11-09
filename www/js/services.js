@@ -82,4 +82,54 @@ angular.module('services', [])
     };
 }])
 
+.factory('expenseService', ['$q', 'ngDexie', function($q, ngDexie){
+    return {
+        getExpenses: function(idTrip){
+            var deferred = $q.defer();
+            ngDexie.getDb(function(db){
+                db.expenses.where("idTrip").equals(idTrip).sortBy("date").then(function(expenses){
+                    deferred.resolve(expenses);
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
+            return deferred.promise;
+        },
+        getExpense: function(idExpense){
+            var deferred = $q.defer();
+            ngDexie.getDb(function(db){
+                db.expenses.get(parseInt(idExpense)).then(function(expense){
+                    deferred.resolve(expense);
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
+            return deferred.promise;
+        },
+        saveExpense: function(newExpense){
+            var deferred = $q.defer();
+            ngDexie.getDb(function(db){
+                db.expenses.put(newExpense).then(function(id){
+                    newExpense.id = id;
+                    deferred.resolve(newExpense);
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
+            return deferred.promise;
+        },
+        deleteExpense: function(idExpense){
+            var deferred = $q.defer();
+            ngDexie.getDb(function(db){
+                db.expenses.delete(parseInt(idExpense)).then(function(){
+                    deferred.resolve();
+                }, function(rejection){
+                    deferred.reject(rejection);
+                });
+            });
+            return deferred.promise;
+        }
+    }
+}])
+
 ;

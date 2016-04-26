@@ -1,6 +1,6 @@
 {
   "name": "NgDexie",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "authors": [
     "Martin Diphoorn <m.diphoorn@flusso.nl>"
   ],
@@ -34,16 +34,23 @@
   ],
   "dependencies": {
     "angular": ">= 1.2.0",
-    "dexie": "~1.1.0"
+    "dexie": "~1.2.0"
   },
-  "_release": "0.0.16",
+  "overrides": {
+    "dexie": {
+      "main": [
+        "dist/latest/Dexie.js",
+        "addons/Dexie.Observable/Dexie.Observable.js"
+      ]
+    }
+  },
+  "_release": "0.0.18",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.16",
-    "commit": "1c269c7425af1474accd1099c8b0d2cd836b66fd"
+    "tag": "v0.0.18",
+    "commit": "833b69120dc0d50336e9add1fda6a6b33a5464f9"
   },
-  "_source": "git://github.com/FlussoBV/NgDexie.git",
+  "_source": "https://github.com/FlussoBV/NgDexie.git",
   "_target": "~0.0.16",
-  "_originalSource": "ng-dexie",
-  "_direct": true
+  "_originalSource": "ng-dexie"
 }

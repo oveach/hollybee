@@ -14,8 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "NgDexie": "ng-dexie#~0.0.16",
+    "NgDexie": "ng-dexie#~0.0.18",
     "angular-material": "~1.0",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.18"
   }
 }

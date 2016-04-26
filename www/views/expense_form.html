@@ -12,7 +12,7 @@
 </md-toolbar>
 
 <md-content>
-    <form ng-submit="save(expense)">
+    <form>
         <md-input-container class="md-block">
             <label>Name</label>
             <input ng-model="expense.label">
@@ -26,7 +26,7 @@
             <input type="date" ng-model="expense.date">
         </md-input-container>
         <div layout="row" layout-align="center">
-            <md-button class="md-raised md-primary">
+            <md-button class="md-raised md-primary" ng-click="save(expense)">
                 Save
             </md-button>
             <md-button class="md-raised" ui-sref="trip_detail({idTrip: idTrip})">

@@ -9,7 +9,7 @@
 </md-toolbar>
 
 <md-content>
-    <form ng-submit="save()">
+    <form>
         <md-input-container class="md-block">
             <label>Name</label>
             <input ng-model="trip.name">
@@ -27,7 +27,7 @@
             <input ng-model="trip.budget">
         </md-input-container>
         <div layout="row" layout-align="center">
-            <md-button class="md-raised md-primary">
+            <md-button class="md-raised md-primary" ng-click="save()">
                 Save
             </md-button>
             <md-button class="md-raised" ng-click="goBack()">
